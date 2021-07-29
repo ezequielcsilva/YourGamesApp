@@ -6,6 +6,7 @@ import { useCart } from '../../hooks/cart'
 import formatValue from '../../utils/formatValue'
 import FloatingCart from '../../components/FloatingCart'
 import api from '../../services/api'
+import games from '../../assets/games'
 
 import {
   Container,
@@ -58,7 +59,7 @@ const Home: React.FC = () => {
           }}
           renderItem={({ item }) => (
             <Product>
-              <ProductImage source={item.image} />
+              <ProductImage source={games[String(item.id)]} />
               <ProductTitle>{item.name}</ProductTitle>
               <ProductTitle>{`Score ${item.score}`}</ProductTitle>
               <PriceContainer>

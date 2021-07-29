@@ -86,17 +86,14 @@ export const ActionButton = styled.TouchableOpacity`
 `
 
 export const TotalProductsContainer = styled.View`
-  position: absolute;
   bottom: 0px;
   flex-direction: row;
   background: ${props => props.theme.colors.primary};
   padding: 20px 40px;
-  justify-content: space-between;
-  align-items: center;
 `
 
 export const TotalProductsText = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   margin-left: 15px;
   flex: 1;
@@ -104,7 +101,7 @@ export const TotalProductsText = styled.Text`
 `
 
 export const SubtotalValue = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   font-weight: bold;
 `

@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import {
   Container,
+  TotalContainer,
   CartPricing,
   CartButton,
   CartButtonText,
@@ -42,17 +43,19 @@ const FloatingCart: React.FC = () => {
 
   return (
     <Container>
-      <CartButton
-        testID="navigate-to-cart-button"
-        onPress={() => navigation.navigate('Cart')}
-      >
-        <FeatherIcon name="shopping-cart" size={24} color="#fff" />
-        <CartButtonText>{`${totalItensInCart} itens`}</CartButtonText>
-      </CartButton>
+      <TotalContainer>
+        <CartButton
+          testID="navigate-to-cart-button"
+          onPress={() => navigation.navigate('Cart')}
+        >
+          <FeatherIcon name="shopping-cart" size={24} color="#fff" />
+          <CartButtonText>{`${totalItensInCart} itens`}</CartButtonText>
+        </CartButton>
 
-      <CartPricing>
-        <CartTotalPrice>{cartTotal}</CartTotalPrice>
-      </CartPricing>
+        <CartPricing>
+          <CartTotalPrice>{cartTotal}</CartTotalPrice>
+        </CartPricing>
+      </TotalContainer>
     </Container>
   )
 }

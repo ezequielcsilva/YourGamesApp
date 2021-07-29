@@ -2,6 +2,8 @@ import React, { useMemo } from 'react'
 import FeatherIcon from 'react-native-vector-icons/Feather'
 
 import { View } from 'react-native'
+import { FRETE, FRETE_MAXIMO } from '../../config/constants'
+import games from '../../assets/games'
 
 import {
   Container,
@@ -53,7 +55,21 @@ const Cart: React.FC = () => {
       return accumulator + productsSubtotal
     }, 0)
 
-    return formatValue(total)
+    return total
+  }, [products])
+
+  const freteTotal = useMemo(() => {
+    const total = products.reduce((accumulator, product) => {
+      const productsSubtotal = FRETE * product.quantity
+
+      if (cartTotal >= FRETE_MAXIMO) {
+        return 0
+      }
+
+      return accumulator + productsSubtotal
+    }, 0)
+
+    return total
   }, [products])
 
   const totalItensInCart = useMemo(() => {
@@ -78,7 +94,7 @@ const Cart: React.FC = () => {
           }}
           renderItem={({ item }) => (
             <Product>
-              <ProductImage source={{ uri: item.image }} />
+              <ProductImage source={games[String(item.id)]} />
               <ProductTitleContainer>
                 <ProductTitle>{item.name}</ProductTitle>
                 <ProductPriceContainer>
@@ -113,11 +129,20 @@ const Cart: React.FC = () => {
           )}
         />
       </ProductContainer>
-
       <TotalProductsContainer>
-        <FeatherIcon name="shopping-cart" color="#fff" size={24} />
+        <FeatherIcon name="shopping-cart" color="#fff" size={20} />
         <TotalProductsText>{`${totalItensInCart} itens`}</TotalProductsText>
-        <SubtotalValue>{cartTotal}</SubtotalValue>
+        <SubtotalValue>{formatValue(cartTotal)}</SubtotalValue>
+      </TotalProductsContainer>
+      <TotalProductsContainer>
+        <FeatherIcon name="truck" color="#fff" size={20} />
+        <TotalProductsText>Frete</TotalProductsText>
+        <SubtotalValue>{formatValue(freteTotal)}</SubtotalValue>
+      </TotalProductsContainer>
+      <TotalProductsContainer>
+        <FeatherIcon name="shopping-bag" color="#fff" size={20} />
+        <TotalProductsText>Total do pedido</TotalProductsText>
+        <SubtotalValue>{formatValue(cartTotal + freteTotal)}</SubtotalValue>
       </TotalProductsContainer>
     </Container>
   )

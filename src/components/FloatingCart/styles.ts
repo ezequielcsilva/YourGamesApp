@@ -2,12 +2,23 @@ import styled from 'styled-components/native'
 
 export const Container = styled.View`
   position: absolute;
-  bottom: 0px;
   flex-direction: row;
+  bottom: 0px;
   background: ${props => props.theme.colors.primary};
   padding: 0 20px;
-  justify-content: space-between;
   align-items: center;
+`
+
+export const FreteContainer = styled.View`
+  flex-direction: row;
+  background: ${props => props.theme.colors.primary};
+  justify-content: space-between;
+`
+
+export const TotalContainer = styled.View`
+  flex-direction: row;
+  background: ${props => props.theme.colors.primary};
+  justify-content: space-between;
 `
 
 export const CartPricing = styled.Text`
@@ -15,7 +26,7 @@ export const CartPricing = styled.Text`
 `
 
 export const CartTotalPrice = styled.Text`
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   font-weight: bold;
 `
