@@ -61,7 +61,7 @@ export const PriceContainer = styled.View`
 export const ProductPrice = styled.Text`
   font-weight: bold;
   font-size: 16px;
-  color: #e7e7;
+  color: #e83f5b;
 `
 
 export const ProductButton = styled.TouchableOpacity``

@@ -5,7 +5,7 @@ export default {
   logo: `${logo}`,
 
   colors: {
-    primary: '#E7E7',
+    primary: '#e83f5b',
     secundary: '#0d0d0d',
 
     background: '#E5E5E5',

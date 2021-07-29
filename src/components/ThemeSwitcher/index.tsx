@@ -18,7 +18,7 @@ const ThemeSwitcher: React.FC<Props> = ({ toggleTheme }) => {
         <Icon
           name={title === 'light' ? 'sun' : 'moon'}
           size={30}
-          color="#E7E7"
+          color="#e83f5b"
         />
       </Button>
     </Container>

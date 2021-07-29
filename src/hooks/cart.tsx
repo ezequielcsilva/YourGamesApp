@@ -9,9 +9,9 @@ import React, {
 import AsyncStorage from '@react-native-community/async-storage'
 
 interface Product {
-  id: string
-  title: string
-  image_url: string
+  id: number
+  name: string
+  image: string
   price: number
   quantity: number
 }
@@ -30,7 +30,7 @@ const CartProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     async function loadProducts(): Promise<void> {
-      const storagedProducts = await AsyncStorage.getItem('@YourGame:products')
+      const storagedProducts = await AsyncStorage.getItem('@PCGames:products')
 
       if (storagedProducts) {
         setProducts([...JSON.parse(storagedProducts)])
@@ -54,7 +54,7 @@ const CartProvider: React.FC = ({ children }) => {
         setProducts([...products, { ...product, quantity: 1 }])
       }
 
-      await AsyncStorage.setItem('@YourGame:products', JSON.stringify(products))
+      await AsyncStorage.setItem('@PCGames:products', JSON.stringify(products))
     },
     [products],
   )
@@ -69,7 +69,7 @@ const CartProvider: React.FC = ({ children }) => {
       setProducts(newProducts)
 
       await AsyncStorage.setItem(
-        '@YourGame:products',
+        '@PCGames:products',
         JSON.stringify(newProducts),
       )
     },
@@ -89,7 +89,7 @@ const CartProvider: React.FC = ({ children }) => {
       }
 
       setProducts(list)
-      await AsyncStorage.setItem('@YourGame:products', JSON.stringify(list))
+      await AsyncStorage.setItem('@PCGames:products', JSON.stringify(list))
     },
     [products],
   )

@@ -100,19 +100,20 @@ const Cart: React.FC = () => {
                   testID={`increment-${item.id}`}
                   onPress={() => handleIncrement(item.id)}
                 >
-                  <FeatherIcon name="plus" color="#e7e7" size={16} />
+                  <FeatherIcon name="plus" color="#e83f5b" size={16} />
                 </ActionButton>
                 <ActionButton
                   testID={`decrement-${item.id}`}
                   onPress={() => handleDecrement(item.id)}
                 >
-                  <FeatherIcon name="minus" color="#e7e7" size={16} />
+                  <FeatherIcon name="minus" color="#e83f5b" size={16} />
                 </ActionButton>
               </ActionContainer>
             </Product>
           )}
         />
       </ProductContainer>
+
       <TotalProductsContainer>
         <FeatherIcon name="shopping-cart" color="#fff" size={24} />
         <TotalProductsText>{`${totalItensInCart} itens`}</TotalProductsText>

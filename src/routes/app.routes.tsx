@@ -8,6 +8,7 @@ import FeatherIcon from 'react-native-vector-icons/Feather'
 import { ThemeContext } from 'styled-components'
 
 import Home from '../pages/Home'
+import Cart from '../pages/Cart'
 
 const App = createStackNavigator()
 
@@ -27,10 +28,28 @@ const AppRoutes: React.FC = () => {
         options={{
           headerShown: true,
           headerTransparent: true,
-          // headerTitle: () => <Image source={logo} width={20} />,
         }}
         name="Home"
         component={Home}
+      />
+      <App.Screen
+        options={{
+          headerTransparent: true,
+          headerBackTitleVisible: false,
+          headerLeftContainerStyle: {
+            marginLeft: 20,
+          },
+
+          headerBackImage: () => (
+            <FeatherIcon
+              name="chevron-left"
+              size={24}
+              color={title === 'dark' ? '#EBEEF8' : '#0d0d0d'}
+            />
+          ),
+        }}
+        name="Cart"
+        component={Cart}
       />
     </App.Navigator>
   )

@@ -4,7 +4,7 @@ export const Container = styled.View`
   width: 50px;
   height: 50px;
   position: absolute;
-  top: 7px;
+  top: 30px;
   right: 7px;
 `
 export const Button = styled.TouchableOpacity`
