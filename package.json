@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest --passWithNoTests --runInBand --no-cache",
+    "test": "jest",
     "test:staged": "npm test -- --findRelatedTests",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
