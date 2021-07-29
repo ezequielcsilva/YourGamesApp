@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { StatusBar } from 'react-native'
 
+import ThemeSwitcher from './components/ThemeSwitcher'
+
 import light from './styles/themes/light'
 import dark from './styles/themes/dark'
 
@@ -25,6 +27,7 @@ const App: React.FC = () => {
           backgroundColor={theme.title === 'dark' ? '#000000' : '#EBEEF8'}
         />
         <Routes />
+        <ThemeSwitcher toggleTheme={toggleTheme} />
       </AppContainer>
     </ThemeProvider>
   )
