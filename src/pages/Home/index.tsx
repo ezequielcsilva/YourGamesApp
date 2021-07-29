@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import FeatherIcon from 'react-native-vector-icons/Feather'
 import { View } from 'react-native'
 
+import { useCart } from '../../hooks/cart'
+import formatValue from '../../utils/formatValue'
+import FloatingCart from '../../components/FloatingCart'
 import api from '../../services/api'
 
 import {
@@ -25,6 +28,8 @@ interface Product {
 }
 
 const Home: React.FC = () => {
+  const { addToCart } = useCart()
+
   const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
@@ -36,6 +41,10 @@ const Home: React.FC = () => {
 
     loadProducts()
   }, [])
+
+  function handleAddToCart(item: Product): void {
+    addToCart(item)
+  }
 
   return (
     <Container>
@@ -53,8 +62,8 @@ const Home: React.FC = () => {
               <ProductTitle>{item.name}</ProductTitle>
               <ProductTitle>{`Score ${item.score}`}</ProductTitle>
               <PriceContainer>
-                <ProductPrice>{item.price}</ProductPrice>
-                <ProductButton>
+                <ProductPrice>{formatValue(item.price)}</ProductPrice>
+                <ProductButton onPress={() => handleAddToCart(item)}>
                   <FeatherIcon size={20} name="plus" color="#C4C4C4" />
                 </ProductButton>
               </PriceContainer>
@@ -62,6 +71,7 @@ const Home: React.FC = () => {
           )}
         />
       </ProductContainer>
+      <FloatingCart />
     </Container>
   )
 }
